@@ -8,16 +8,17 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: MediaQuery.of(context).size.height,
+
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: NetworkImage("https://picsum.photos/id/237/200/300"),
+            image: AssetImage(model.getImage()),
             fit: BoxFit.cover
         ),
       ),
       child:  Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(32.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,24 +26,27 @@ class HomeViewBody extends StatelessWidget {
               model.cityName,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
+              fontSize: 50,
               color: Colors.white,
             ),),
             const SizedBox(
-              height: 5,
+              height: 8,
             ),
             Text(
               model.weatherState,
               style: const TextStyle(
                 color: Colors.white,
+                fontSize: 30,
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 12,
             ),
             Text(
               model.degree.toString(),
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
+                fontFamily: 'Mukta',
+                fontSize: 50,
                 color: Colors.white,
               ),),
           ],

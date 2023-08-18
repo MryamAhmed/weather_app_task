@@ -5,36 +5,36 @@ class WeatherModel{
 
   WeatherModel({required this.cityName,required this.degree,required this.weatherState});
 
-
   factory WeatherModel.fromJson(jsonData){
     return WeatherModel(
         cityName:jsonData["name"],
         degree: jsonData["main"]['temp'],
-        weatherState: jsonData["weather"]["main"]
+        weatherState: jsonData["weather"][0]["main"]
     );
   }
 
   String getImage() {
-    if (weatherState == 'Sunny' || weatherState == 'Clear' ||  weatherState == 'partly cloudy') {
-      return 'assets/images/clear.png';
+    if (weatherState == 'Sunny'  ) {
+      return 'assets/images/sunny.jpg';
     }
     else if (
-    weatherState == 'Blizzard' ||  weatherState == 'Patchy snow possible'  ||  weatherState == 'Patchy sleet possible' || weatherState == 'Patchy freezing drizzle possible' || weatherState == 'Blowing snow')
+    weatherState == 'Blizzard' ||   weatherState == 'Showers' ||weatherState == 'Patchy snow possible'  ||  weatherState == 'Patchy sleet possible' || weatherState == 'Patchy freezing drizzle possible' || weatherState == 'Blowing snow')
     {
-      return 'assets/images/snow.png';
+      return 'assets/images/snow.jpg';
     }
-    else if (weatherState == 'Freezing fog' || weatherState == 'Fog' ||  weatherState == 'Heavy Cloud' || weatherState == 'Mist' || weatherState == 'Fog')
+    else if ( weatherState == 'partly cloudy'||  weatherState == 'Freezing fog' || weatherState == 'Fog' ||  weatherState == 'Heavy Cloud' || weatherState == 'Mist' || weatherState == 'Fog')
     {
-      return 'assets/images/cloudy.png';
+      return 'assets/images/cloudy.jpeg';
     }
-    else if (weatherState == 'Patchy rain possible' || weatherState == 'Heavy Rain' || weatherState == 'Showers	')
+    else if (weatherState == 'Patchy rain possible' || weatherState == 'Heavy Rain'|| weatherState == 'Rain' )
     {
-      return 'assets/images/rainy.png';
-    } else if (weatherState == 'Thundery outbreaks possible' || weatherState == 'Moderate or heavy snow with thunder' || weatherState == 'Patchy light snow with thunder'|| weatherState == 'Moderate or heavy rain with thunder' || weatherState == 'Patchy light rain with thunder' ) {
-      return 'assets/images/thunderstorm.png';
+      return 'assets/images/rainy.jpg';
+    } else if (weatherState == 'Thundery outbreaks possible' || weatherState == 'Moderate or heavy snow with thunder' || weatherState == 'Patchy light snow with thunder'|| weatherState == 'Moderate or heavy rain with thunder' || weatherState == 'Patchy light rain with thunder' )
+    {
+      return 'assets/images/thunderstorm.jpeg';
     } else
     {
-      return 'assets/images/clear.png';
+      return 'assets/images/clear.jpeg';
     }
   }
 }

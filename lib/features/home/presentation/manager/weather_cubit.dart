@@ -9,19 +9,17 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final HomeRepo homeRepo ;
   WeatherModel? weatherModel;
-  String? cityName;
 
   void getWeather({required String cityName})async{
     emit(WeatherLoadingState());
 
-    var result =await  homeRepo.fetchCurrentWeather(
-        url: 'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=096e1aea2ab31151168f21eb88822bb4'
-    );
-
+    var result =await  homeRepo.fetchCurrentWeather(cityName: cityName);
     result.fold((l) => {
-      emit(WeatherFailureState(error: l.errMessage))
+      emit(WeatherFailureState(error: l.errMessage)),
+      print(l.errMessage)
     }, (r) => {
       emit(WeatherSuccessState(weatherModel: r))
     });
   }
+
 }
