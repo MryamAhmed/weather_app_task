@@ -15,3 +15,10 @@ class WeatherFailureState extends WeatherState {
 
   WeatherFailureState({required this.error});
 }
+
+
+class WeatherNullState extends WeatherState {
+  String Message;
+
+  WeatherNullState({required this.Message});
+}

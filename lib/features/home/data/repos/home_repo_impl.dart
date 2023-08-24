@@ -14,7 +14,7 @@ class HomeRepoImpl implements HomeRepo{
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, WeatherModel>> fetchCurrentWeather({required String cityName}) async{
+  Future<Either<Failure, WeatherModel>> fetchCurrentWeather({required String? cityName}) async{
     try{
       Map<dynamic, dynamic> data = await apiService.get(
           url: 'https://api.openweathermap.org/data/2.5/weather?q=$cityName,lat=44.34&lon=10.99&units=metric&appid=096e1aea2ab31151168f21eb88822bb4');
@@ -24,6 +24,7 @@ class HomeRepoImpl implements HomeRepo{
       return right(weather);
 
     } catch(e){
+
       if(e is DioError){
         return left(ServerFailure.fromDioError(e));
       }

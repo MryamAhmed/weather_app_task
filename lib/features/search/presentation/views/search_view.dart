@@ -8,17 +8,6 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-        title: const Center(
-            child: Text(
-                'WEATHER APP',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-
-            ),)),
-      ),
       body: SearchViewBody(),
     );
   }
