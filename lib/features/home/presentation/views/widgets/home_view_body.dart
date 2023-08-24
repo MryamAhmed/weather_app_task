@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather/const.dart';
 import 'package:weather/features/home/data/models/weather_model.dart';
 
 class HomeViewBody extends StatelessWidget {
