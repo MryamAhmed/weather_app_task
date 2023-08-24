@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weather/const.dart';
 import '../../../../search/presentation/views/search_view.dart';
 
 class faieldBody extends StatelessWidget {
@@ -21,32 +22,34 @@ class faieldBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
-              const Spacer(),
+              const Spacer(
+                flex: 2,),
               Text(
                 errorMessage,
                 style: const TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                 ),
               ),
-              const Spacer(),
+              const Spacer(flex: 2,),
               GestureDetector(
                 onTap: () {
-                    Navigator.pop(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const SearchView()),
                     );
                 },
                 child: Container(
                   height: 45,
+                  width: 250,
                   decoration: BoxDecoration(
-                    color: Color(0xff00007C),
+                    color: mainColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                     Icon(Icons.arrow_back_outlined,color: Colors.white,),
-                      const SizedBox(
+                      SizedBox(
                           width: 20),
                       Text(
                         'back',
