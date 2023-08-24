@@ -9,6 +9,7 @@ import 'features/home/presentation/manager/weather_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer=SimpleBlocObserver();
   await CasheHelper.init();
   runApp( BlocProvider(

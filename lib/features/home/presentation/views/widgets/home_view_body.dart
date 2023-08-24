@@ -27,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
               color:model.getColor(),
             ),),
           Text(
-            model.maxDegree.toString()+'°',
+            '${model.maxDegree}°',
             style:  TextStyle(
               fontFamily: 'Mukta',
               fontSize: 35,

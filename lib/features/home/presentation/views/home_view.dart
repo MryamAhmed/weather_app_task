@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/const.dart';
 import 'package:weather/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:weather/features/search/presentation/views/search_view.dart';
 import '../manager/weather_cubit.dart';
@@ -24,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff00007C),
+          backgroundColor: mainColor,
           title: const Text(
             'WEATHER APP',
             style: TextStyle(
@@ -62,7 +63,11 @@ class _HomeViewState extends State<HomeView> {
             );
           }else{
             return  const Center(
-                child: Text('there is no weather 😔 start search ')
+                child: Text(
+                    'there is no weather 😔 start search ',
+                style: TextStyle(
+                  fontSize: 20
+                ),)
             );
           }
         }
