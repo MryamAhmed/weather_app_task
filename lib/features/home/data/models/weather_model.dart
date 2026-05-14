@@ -1,76 +1,58 @@
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../const.dart';
-class WeatherModel {
-  String cityName;
-  String weatherState;
-  String weatherStateDesc;
-  num degree;
-  num minDegree;
-  num maxDegree;
+import '../../domain/entities/weather.dart';
 
-  WeatherModel(
-      {required this.cityName,
-      required this.degree,
-      required this.weatherState,
-      required this.weatherStateDesc,
-      required this.maxDegree,
-      required this.minDegree});
+part 'weather_model.freezed.dart';
+part 'weather_model.g.dart';
 
-  factory WeatherModel.fromJson(jsonData) {
-    return WeatherModel(
-      cityName: jsonData["name"],
-      degree: jsonData["main"]['temp'],
-      weatherState: jsonData["weather"][0]["main"],
-      weatherStateDesc: jsonData["weather"][0]["description"],
-      maxDegree: jsonData["main"]['temp_max'],
-      minDegree: jsonData["main"]['temp_min'],
+@freezed
+class WeatherModel with _$WeatherModel {
+  const WeatherModel._();
+
+  const factory WeatherModel({
+    required String name,
+    required MainWeatherModel main,
+    required List<WeatherDescriptionModel> weather,
+  }) = _WeatherModel;
+
+  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$WeatherModelFromJson(json);
+
+  Weather toEntity() {
+    final description = weather.isNotEmpty
+        ? weather.first
+        : const WeatherDescriptionModel(main: 'Clear', description: 'clear sky');
+
+    return Weather(
+      cityName: name,
+      weatherState: description.main,
+      weatherStateDescription: description.description,
+      temperature: main.temp,
+      minTemperature: main.tempMin,
+      maxTemperature: main.tempMax,
     );
   }
+}
 
-  String getImage() {
-    if (weatherState == 'Sunny') {
-      return 'assets/images/sunny.jpg';
-    } else if (weatherState == 'Blizzard' ||
-        weatherState == 'Showers' ||
-        weatherState == 'Patchy snow possible' ||
-        weatherState == 'Patchy sleet possible' ||
-        weatherState == 'Patchy freezing drizzle possible' ||
-        weatherState == 'Blowing snow') {
-      return 'assets/images/snow.jpg';
-    } else if (weatherState == 'Clouds' ||
-        weatherState == 'cloudy' ||
-        weatherState == 'partly cloudy' ||
-        weatherState == 'Freezing fog' ||
-        weatherState == 'Fog' ||
-        weatherState == 'Heavy Cloud' ||
-        weatherState == 'Mist' ||
-        weatherState == 'Fog') {
-      return 'assets/images/clouds.jpeg';
-    } else if (weatherState == 'Patchy rain possible' ||
-        weatherState == 'Heavy Rain' ||
-        weatherState == 'Rain') {
-      return 'assets/images/rainy.jpg';
-    } else if (weatherState == 'Thundery outbreaks possible' ||
-        weatherState == 'Moderate or heavy snow with thunder' ||
-        weatherState == 'Patchy light snow with thunder' ||
-        weatherState == 'Moderate or heavy rain with thunder' ||
-        weatherState == 'Patchy light rain with thunder') {
-      return 'assets/images/thunderstorm.jpeg';
-    } else {
-      return 'assets/images/clear.jpeg';
-    }
-  }
+@freezed
+class MainWeatherModel with _$MainWeatherModel {
+  const factory MainWeatherModel({
+    required num temp,
+    @JsonKey(name: 'temp_min') required num tempMin,
+    @JsonKey(name: 'temp_max') required num tempMax,
+  }) = _MainWeatherModel;
 
-  Color getColor(){
-    if (weatherState == 'Patchy rain possible' ||
-        weatherState == 'Heavy Rain' ||
-        weatherState == 'Rain'  || weatherState == 'Sunny')
-    {
-      return Colors.white;
-    }
-    else{
-      return mainColor;
-    }
-  }
+  factory MainWeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$MainWeatherModelFromJson(json);
+}
+
+@freezed
+class WeatherDescriptionModel with _$WeatherDescriptionModel {
+  const factory WeatherDescriptionModel({
+    required String main,
+    required String description,
+  }) = _WeatherDescriptionModel;
+
+  factory WeatherDescriptionModel.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDescriptionModelFromJson(json);
 }
