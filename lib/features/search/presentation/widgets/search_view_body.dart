@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../manager/search_cubit.dart';
 
 class SearchViewBody extends StatefulWidget {
@@ -37,7 +38,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
                 color: AppColors.primary,
               ),
             ),
-            hintText: 'Enter City Name...',
+            hintText: AppLocalizations.of(context)!.enterCityName,
             disabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/routes/route_names.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/presentation/widgets/loading_widget.dart';
 import '../manager/search_cubit.dart';
 import '../widgets/search_view_body.dart';
@@ -24,7 +25,7 @@ class SearchPage extends StatelessWidget {
         );
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Search')),
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.searchTitle)),
         body: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             return state.maybeWhen(

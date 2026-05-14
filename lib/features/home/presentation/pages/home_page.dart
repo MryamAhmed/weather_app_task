@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shared/presentation/widgets/app_bar_widget.dart';
 import '../../../../shared/presentation/widgets/error_widget.dart';
 import '../../../../shared/presentation/widgets/loading_widget.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../manager/home_cubit.dart';
 import '../widgets/home_view_body.dart';
 
@@ -21,10 +22,10 @@ class HomePage extends StatelessWidget {
             loading: () => const LoadingWidget(),
             success: (weather) => HomeViewBody(weather: weather),
             failure: (message) => AppErrorWidget(message: message),
-            empty: () => const Center(
+            empty: () => Center(
               child: Text(
-                'There is no weather. Start search.',
-                style: TextStyle(fontSize: 20),
+                AppLocalizations.of(context)!.emptyWeatherMessage,
+                style: const TextStyle(fontSize: 20),
               ),
             ),
           );

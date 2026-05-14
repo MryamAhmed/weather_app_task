@@ -1,0 +1,24 @@
+{
+  "@@locale": "ar",
+  "appTitle": "تطبيق الطقس",
+  "searchTitle": "بحث",
+  "emptyWeatherMessage": "لا توجد بيانات طقس. ابدأ البحث.",
+  "enterCityName": "أدخل اسم المدينة...",
+  "searchAgain": "ابحث مرة أخرى",
+  "minTemperature": "الصغرى {temperature}°",
+  "@minTemperature": {
+    "placeholders": {
+      "temperature": {
+        "type": "num"
+      }
+    }
+  },
+  "maxTemperature": "الكبرى {temperature}°",
+  "@maxTemperature": {
+    "placeholders": {
+      "temperature": {
+        "type": "num"
+      }
+    }
+  }
+}

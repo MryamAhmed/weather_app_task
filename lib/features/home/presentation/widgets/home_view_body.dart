@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/app_localizations.dart';
 import '../../domain/entities/weather.dart';
 import 'weather_visuals.dart';
 
@@ -13,6 +14,7 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final textColor = WeatherVisuals.textColorFor(weather.weatherState);
 
     return Container(
@@ -70,7 +72,7 @@ class HomeViewBody extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'min ${weather.minTemperature}°',
+                    l10n.minTemperature(weather.minTemperature),
                     style: TextStyle(
                       fontFamily: 'Mukta',
                       fontSize: 20,
@@ -78,7 +80,7 @@ class HomeViewBody extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'max ${weather.maxTemperature}°',
+                    l10n.maxTemperature(weather.maxTemperature),
                     style: TextStyle(
                       fontFamily: 'Mukta',
                       fontSize: 20,

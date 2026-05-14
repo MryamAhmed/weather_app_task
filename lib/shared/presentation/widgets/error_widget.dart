@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/routes/route_names.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../l10n/app_localizations.dart';
 
 class AppErrorWidget extends StatelessWidget {
   const AppErrorWidget({
@@ -32,7 +33,7 @@ class AppErrorWidget extends StatelessWidget {
               FilledButton.icon(
                 onPressed: () => context.pushNamed(RouteNames.searchName),
                 icon: const Icon(Icons.search_outlined),
-                label: const Text('Search again'),
+                label: Text(AppLocalizations.of(context)!.searchAgain),
                 style: FilledButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,

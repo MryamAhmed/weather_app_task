@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/routes/route_names.dart';
+import '../../../l10n/app_localizations.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key});
@@ -12,9 +13,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        'WEATHER APP',
-        style: TextStyle(
+      title: Text(
+        AppLocalizations.of(context)!.appTitle,
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 25,
         ),

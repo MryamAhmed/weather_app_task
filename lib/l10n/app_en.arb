@@ -1,0 +1,24 @@
+{
+  "@@locale": "en",
+  "appTitle": "WEATHER APP",
+  "searchTitle": "Search",
+  "emptyWeatherMessage": "There is no weather. Start search.",
+  "enterCityName": "Enter City Name...",
+  "searchAgain": "Search again",
+  "minTemperature": "min {temperature}°",
+  "@minTemperature": {
+    "placeholders": {
+      "temperature": {
+        "type": "num"
+      }
+    }
+  },
+  "maxTemperature": "max {temperature}°",
+  "@maxTemperature": {
+    "placeholders": {
+      "temperature": {
+        "type": "num"
+      }
+    }
+  }
+}
